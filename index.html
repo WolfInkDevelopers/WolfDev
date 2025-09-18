@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WolfDev - Roblox Programmer & Game Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-dark: #09090b;
+            --background-light: #fafafa;
+            --text-dark-primary: #fafafa;
+            --text-dark-secondary: #a1a1aa;
+            --text-light-primary: #09090b;
+            --text-light-secondary: #71717a;
+            --card-dark: #18181b;
+            --card-light: #ffffff;
+            --border-dark: #27272a;
+            --border-light: #e4e4e7;
+            --primary-accent: #6d28d9; /* Violet-700 */
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark body {
+            background-color: var(--background-dark);
+            color: var(--text-dark-primary);
+        }
+        body {
+            background-color: var(--background-light);
+            color: var(--text-light-primary);
+        }
+        .background-gradient {
+            background-image: radial-gradient(circle at 1px 1px, rgba(160, 160, 160, 0.2) 1px, transparent 0);
+            background-size: 20px 20px;
+        }
+        .glow-border {
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+        .glow-border:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0.75rem; /* same as rounded-xl */
+            padding: 2px;
+            background: conic-gradient(from 180deg at 50% 50%, rgba(168, 85, 247, 0.8) 0deg, rgba(79, 70, 229, 0.8) 180deg, rgba(168, 85, 247, 0.8) 360deg);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+        }
+        .glow-border:hover:before {
+            opacity: 1;
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .theme-toggle-button {
+            transition: all 0.3s ease;
+        }
+        .theme-toggle-button:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/5 dark:bg-black/5 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+                Wolf<span class="text-violet-600">Dev</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-zinc-800 dark:text-zinc-300">
+                <a href="#about" class="hover:text-violet-600 transition-colors">About</a>
+                <a href="#projects" class="hover:text-violet-600 transition-colors">Projects</a>
+                <a href="#skills" class="hover:text-violet-600 transition-colors">Skills</a>
+                <a href="#contact" class="hover:text-violet-600 transition-colors">Contact</a>
+            </nav>
+            <div class="flex items-center">
+                <!-- Theme toggle button removed -->
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center text-center relative overflow-hidden">
+            <div class="absolute inset-0 background-gradient -z-10"></div>
+            <div class="absolute inset-0 bg-hero-pattern opacity-5 -z-10"></div>
+            <div class="scroll-reveal">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter text-zinc-900 dark:text-zinc-50">
+                    Wolf<span class="text-violet-600">Dev</span> – Roblox Programmer & Game Developer
+                </h1>
+                <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-zinc-600 dark:text-zinc-400">
+                    I create optimized systems, innovative game mechanics, and immersive experiences.
+                </p>
+                <div class="mt-10 flex justify-center">
+                    <a href="#projects" class="inline-block bg-violet-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-offset-2 focus:ring-offset-zinc-50 dark:focus:ring-offset-zinc-900 transition-all transform hover:scale-105">
+                        View My Work
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 md:py-32 scroll-reveal">
+            <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-12 items-center">
+                <div class="md:col-span-1 flex justify-center">
+                     <div class="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-violet-600 to-indigo-700 flex items-center justify-center">
+                        <svg class="w-24 h-24 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="md:col-span-2 text-center md:text-left">
+                    <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">About Me</h2>
+                    <p class="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+                        I'm a passionate 20-year-old developer with 3 years of dedicated coding experience, specializing in Roblox Lua. My expertise extends to web development with HTML, CSS, & JavaScript, as well as Python and the Godot Engine. I thrive on building efficient, secure, and genuinely fun systems from the ground up. While my current Roblox account is new, it's a showcase for my fresh, modern, and meticulously coded projects. I'm driven by the challenge of creating robust and engaging interactive experiences.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section id="projects" class="py-20 md:py-32 scroll-reveal">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">Featured Projects</h2>
+                <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-400">A selection of my recent systems and mechanics.</p>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project Card 1 -->
+                <div class="glow-border bg-card-light dark:bg-card-dark rounded-xl shadow-md dark:shadow-2xl overflow-hidden group p-1">
+                    <div class="bg-card-light dark:bg-card-dark rounded-lg h-full p-6 flex flex-col">
+                        <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Coin Rain System + Anticheat</h3>
+                        <p class="mt-3 text-zinc-600 dark:text-zinc-400 flex-grow">A rewarding and visually engaging coin system integrated with a built-in anti-cheat mechanism to ensure fair and secure gameplay.</p>
+                        <div class="mt-6">
+                            <a href="https://www.roblox.com/games/11186845936942/Coin-Rain-System-With-Anticheat" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-violet-600 hover:text-violet-500 transition-colors">
+                                Play on Roblox
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.19a.75.75 0 0 0 .053 1.06Z" clip-rule="evenodd" /></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="glow-border bg-card-light dark:bg-card-dark rounded-xl shadow-md dark:shadow-2xl overflow-hidden group p-1">
+                     <div class="bg-card-light dark:bg-card-dark rounded-lg h-full p-6 flex flex-col">
+                        <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Dialog System + Camera System</h3>
+                        <p class="mt-3 text-zinc-600 dark:text-zinc-400 flex-grow">An interactive and customizable dialog system paired with dynamic camera handling to create immersive and cinematic storytelling moments.</p>
+                         <div class="mt-6">
+                            <a href="https://www.roblox.com/games/70642053114061/Dialog-System-and-Camera-System" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-violet-600 hover:text-violet-500 transition-colors">
+                                Play on Roblox
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.19a.75.75 0 0 0 .053 1.06Z" clip-rule="evenodd" /></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="glow-border bg-card-light dark:bg-card-dark rounded-xl shadow-md dark:shadow-2xl overflow-hidden group p-1">
+                     <div class="bg-card-light dark:bg-card-dark rounded-lg h-full p-6 flex flex-col">
+                        <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Procedural Footplanting System</h3>
+                        <p class="mt-3 text-zinc-600 dark:text-zinc-400 flex-grow">Real-time procedural animation with accurate foot planting, combined with a smooth movement and integrated camera logic for realistic character locomotion.</p>
+                         <div class="mt-6">
+                            <a href="https://www.roblox.com/games/109602778462959/Footplanting-System-and-Movement-Camera-System" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-violet-600 hover:text-violet-500 transition-colors">
+                                Play on Roblox
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.19a.75.75 0 0 0 .053 1.06Z" clip-rule="evenodd" /></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32 scroll-reveal">
+             <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">Core Skills</h2>
+                <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-400">The technologies I work with to build my projects.</p>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <!-- Skill 1 -->
+                    <div class="flex flex-col items-center gap-4 p-4">
+                        <div class="w-16 h-16 bg-zinc-200 dark:bg-zinc-800 rounded-full flex items-center justify-center">
+                           <svg class="w-8 h-8 text-violet-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-zinc-800 dark:text-zinc-200">Roblox Lua</h3>
+                        <p class="text-sm text-zinc-500 dark:text-zinc-400">Advanced</p>
+                    </div>
+                    <!-- Skill 2 -->
+                    <div class="flex flex-col items-center gap-4 p-4">
+                        <div class="w-16 h-16 bg-zinc-200 dark:bg-zinc-800 rounded-full flex items-center justify-center">
+                             <svg class="w-8 h-8 text-violet-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25A2.25 2.25 0 0 1 5.25 3h13.5A2.25 2.25 0 0 1 21 5.25Z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-zinc-800 dark:text-zinc-200">Godot Engine</h3>
+                        <p class="text-sm text-zinc-500 dark:text-zinc-400">Game Development</p>
+                    </div>
+                    <!-- Skill 4 -->
+                    <div class="flex flex-col items-center gap-4 p-4">
+                        <div class="w-16 h-16 bg-zinc-200 dark:bg-zinc-800 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-violet-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline points="64 88 16 128 64 168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="192 88 240 128 192 168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="160" y1="40" x2="96" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-zinc-800 dark:text-zinc-200">Web Development</h3>
+                        <p class="text-sm text-zinc-500 dark:text-zinc-400">HTML/CSS/JS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 scroll-reveal">
+            <div class="max-w-2xl mx-auto text-center bg-zinc-100 dark:bg-zinc-900/50 p-8 md:p-12 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+                <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-4xl">Let’s bring your ideas to life.</h2>
+                <p class="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+                    I'm ready to tackle new challenges and build amazing things. Let's connect and discuss your next project.
+                </p>
+                 <!-- Social icons removed -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-100 dark:bg-zinc-900/50 border-t border-zinc-200 dark:border-zinc-800">
+        <div class="container mx-auto px-6 py-8 text-center text-zinc-500 dark:text-zinc-400">
+            
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality Removed
+
+        // Scroll Reveal Animation
+        const scrollElements = document.querySelectorAll('.scroll-reveal');
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add('visible');
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+
+        // Trigger on load for elements already in view
+        handleScrollAnimation();
+
+    </script>
+</body>
+</html>
+
+
+
